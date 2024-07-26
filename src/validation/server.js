@@ -20,6 +20,13 @@ export const startServer = () => {
     }),
   );
 
+  app.use(
+    express.json({
+      type: ['application/json', 'application/vnd.api+json'],
+      limit: '100kb',
+    }),
+  );
+
   app.use((req, res, next) => {
     console.log(req.method);
     next();
