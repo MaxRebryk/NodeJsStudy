@@ -4,6 +4,7 @@ import cors from 'cors';
 import { env } from './utils/env.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
 import { errorHandler } from './middlewares/errorHandler.js';
+import cookieParser from 'cookie-parser';
 
 import router from './routers/index.js';
 
@@ -28,6 +29,8 @@ export const startServer = () => {
       limit: '100kb',
     }),
   );
+
+  app.use(cookieParser());
 
   app.use((req, res, next) => {
     console.log(req.method);
