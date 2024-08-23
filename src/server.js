@@ -5,7 +5,7 @@ import { env } from './utils/env.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 import cookieParser from 'cookie-parser';
-
+import { UPLOAD_DIR } from './constants/index.js';
 import router from './routers/index.js';
 
 const PORT = Number(env('PORT', '3000'));
@@ -32,10 +32,13 @@ export const startServer = () => {
 
   app.use(cookieParser());
 
+  app.use('/uploads', express.static(UPLOAD_DIR));
+
   app.use((req, res, next) => {
     console.log(req.method);
     next();
   });
+
   app.get('/', (req, res) => {
     res.json({
       message: 'Hello world!',

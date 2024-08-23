@@ -65,6 +65,7 @@ export const deleteStudent = async (studentId) => {
 };
 
 export const updateStudent = async (studentId, payload, options = {}) => {
+  console.log(studentId);
   const rawResult = await StudentsCollection.findOneAndUpdate(
     { _id: studentId },
     payload,
