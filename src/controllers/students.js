@@ -91,7 +91,6 @@ export const upsertStudentController = async (req, res, next) => {
 
 export const patchStudentController = async (req, res, next) => {
   const { studentId } = req.params;
-  console.log(`Deleting student with ID: ${studentId}`);
   const photo = req.file;
 
   let photoUrl;
